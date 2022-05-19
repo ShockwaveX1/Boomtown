@@ -1,3 +1,5 @@
+/* This script controls the movement of the player. 
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
