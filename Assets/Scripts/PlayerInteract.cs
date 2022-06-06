@@ -25,6 +25,7 @@ public class PlayerInteract : MonoBehaviour
     {
         playerUI.UpdateText(string.Empty);
 
+        // Check if the player is within range to interact. 
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * distance);
         RaycastHit hitInfo;

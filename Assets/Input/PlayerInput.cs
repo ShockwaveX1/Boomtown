@@ -89,6 +89,33 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrimaryFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""9fe75915-b4ec-4366-b34c-3b977242fbe5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondaryFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""38c7192e-69f5-4d99-83d3-31208e63fc32"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuickSwitch"",
+                    ""type"": ""Button"",
+                    ""id"": ""310451c6-5036-43d7-8e0b-899fbe9d73ae"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -298,6 +325,72 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""WeaponSwitch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""00d2e8c9-d1e3-4291-a2de-61e8bc98f855"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrimaryFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6308227-9e1d-40c8-b25b-81b3f6baaadf"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrimaryFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d3c8ddf-2fcf-44e7-a7e3-468dd07c8bb3"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondaryFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7710b443-49b2-4b52-a6d7-996282fba55f"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondaryFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0557522-149c-4ea2-8d69-92e4b3ab572c"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickSwitch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8593df2a-439e-4b49-bf3b-29e219e24535"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickSwitch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -831,6 +924,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_Crouch = m_OnFoot.FindAction("Crouch", throwIfNotFound: true);
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         m_OnFoot_WeaponSwitch = m_OnFoot.FindAction("WeaponSwitch", throwIfNotFound: true);
+        m_OnFoot_PrimaryFire = m_OnFoot.FindAction("PrimaryFire", throwIfNotFound: true);
+        m_OnFoot_SecondaryFire = m_OnFoot.FindAction("SecondaryFire", throwIfNotFound: true);
+        m_OnFoot_QuickSwitch = m_OnFoot.FindAction("QuickSwitch", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -909,6 +1005,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Crouch;
     private readonly InputAction m_OnFoot_Interact;
     private readonly InputAction m_OnFoot_WeaponSwitch;
+    private readonly InputAction m_OnFoot_PrimaryFire;
+    private readonly InputAction m_OnFoot_SecondaryFire;
+    private readonly InputAction m_OnFoot_QuickSwitch;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -920,6 +1019,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_OnFoot_Crouch;
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputAction @WeaponSwitch => m_Wrapper.m_OnFoot_WeaponSwitch;
+        public InputAction @PrimaryFire => m_Wrapper.m_OnFoot_PrimaryFire;
+        public InputAction @SecondaryFire => m_Wrapper.m_OnFoot_SecondaryFire;
+        public InputAction @QuickSwitch => m_Wrapper.m_OnFoot_QuickSwitch;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -950,6 +1052,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @WeaponSwitch.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnWeaponSwitch;
                 @WeaponSwitch.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnWeaponSwitch;
                 @WeaponSwitch.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnWeaponSwitch;
+                @PrimaryFire.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPrimaryFire;
+                @PrimaryFire.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPrimaryFire;
+                @PrimaryFire.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPrimaryFire;
+                @SecondaryFire.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSecondaryFire;
+                @SecondaryFire.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSecondaryFire;
+                @SecondaryFire.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSecondaryFire;
+                @QuickSwitch.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnQuickSwitch;
+                @QuickSwitch.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnQuickSwitch;
+                @QuickSwitch.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnQuickSwitch;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -975,6 +1086,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @WeaponSwitch.started += instance.OnWeaponSwitch;
                 @WeaponSwitch.performed += instance.OnWeaponSwitch;
                 @WeaponSwitch.canceled += instance.OnWeaponSwitch;
+                @PrimaryFire.started += instance.OnPrimaryFire;
+                @PrimaryFire.performed += instance.OnPrimaryFire;
+                @PrimaryFire.canceled += instance.OnPrimaryFire;
+                @SecondaryFire.started += instance.OnSecondaryFire;
+                @SecondaryFire.performed += instance.OnSecondaryFire;
+                @SecondaryFire.canceled += instance.OnSecondaryFire;
+                @QuickSwitch.started += instance.OnQuickSwitch;
+                @QuickSwitch.performed += instance.OnQuickSwitch;
+                @QuickSwitch.canceled += instance.OnQuickSwitch;
             }
         }
     }
@@ -1093,6 +1213,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnWeaponSwitch(InputAction.CallbackContext context);
+        void OnPrimaryFire(InputAction.CallbackContext context);
+        void OnSecondaryFire(InputAction.CallbackContext context);
+        void OnQuickSwitch(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

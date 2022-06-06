@@ -67,6 +67,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PrimaryFire",
+                    "type": "Button",
+                    "id": "9fe75915-b4ec-4366-b34c-3b977242fbe5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SecondaryFire",
+                    "type": "Button",
+                    "id": "38c7192e-69f5-4d99-83d3-31208e63fc32",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "QuickSwitch",
+                    "type": "Button",
+                    "id": "310451c6-5036-43d7-8e0b-899fbe9d73ae",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -276,6 +303,72 @@
                     "processors": "",
                     "groups": "",
                     "action": "WeaponSwitch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "00d2e8c9-d1e3-4291-a2de-61e8bc98f855",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a6308227-9e1d-40c8-b25b-81b3f6baaadf",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d3c8ddf-2fcf-44e7-a7e3-468dd07c8bb3",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondaryFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7710b443-49b2-4b52-a6d7-996282fba55f",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondaryFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d0557522-149c-4ea2-8d69-92e4b3ab572c",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuickSwitch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8593df2a-439e-4b49-bf3b-29e219e24535",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuickSwitch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

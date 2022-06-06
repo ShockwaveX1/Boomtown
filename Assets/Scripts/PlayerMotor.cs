@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
-    private CharacterController controller;
+    private CharacterController CharController;
     private Vector3 playerVelocity;
     private bool isGrounded;
     public float Speed = 5f;
@@ -19,21 +19,22 @@ public class PlayerMotor : MonoBehaviour
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        CharController = GetComponent<CharacterController>();
     }
 
     void Update()
     {
-        isGrounded = controller.isGrounded;
+        isGrounded = CharController.isGrounded;
+        // Crouching
         if (lerpCrouch)
         {
             crouchTimer += Time.deltaTime;
             float p = crouchTimer / 1;
             p *= p;
             if (crouching)
-                controller.height = Mathf.Lerp(controller.height, 1, p);
+                CharController.height = Mathf.Lerp(CharController.height, 1, p);
             else
-                controller.height = Mathf.Lerp(controller.height, 2, p);
+                CharController.height = Mathf.Lerp(CharController.height, 2, p);
 
             if (p > 1)
             {
@@ -49,11 +50,13 @@ public class PlayerMotor : MonoBehaviour
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = input.x;
         moveDirection.z = input.y; // Taking the 2D vector of input and applying it to the 3D vector of the character. 
-        controller.Move(transform.TransformDirection(moveDirection) * Speed * Time.deltaTime);
+        CharController.Move(transform.TransformDirection(moveDirection) * Speed * Time.deltaTime);
         playerVelocity.y += gravity * Time.deltaTime;
         if (isGrounded && playerVelocity.y < 0)
+        {
             playerVelocity.y = -2f;
-        controller.Move(playerVelocity * Time.deltaTime);
+        }
+        CharController.Move(playerVelocity * Time.deltaTime);
         //Debug.Log(playerVelocity.y);
     }
 
