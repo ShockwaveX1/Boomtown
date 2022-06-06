@@ -126,12 +126,15 @@ public class InputManager : MonoBehaviour
     void QuickSwitchWeapons()
     {
         Debug.Log("Quick Switch");
-        int tempPrevious = previousWeaponIndex;
-        int tempCurrent = currentWeaponIndex;
-        currentWeaponIndex = tempPrevious;
-        previousWeaponIndex = tempCurrent;
-        WeaponsCarried[previousWeaponIndex].SetActive(false);
-        WeaponsCarried[currentWeaponIndex].SetActive(true);
+        if (WeaponsCarried.Length > 1)
+        {
+            int tempPrevious = previousWeaponIndex;
+            int tempCurrent = currentWeaponIndex;
+            currentWeaponIndex = tempPrevious;
+            previousWeaponIndex = tempCurrent;
+            WeaponsCarried[previousWeaponIndex].SetActive(false);
+            WeaponsCarried[currentWeaponIndex].SetActive(true);
+        }
     }
 
     void PrimaryFire()
