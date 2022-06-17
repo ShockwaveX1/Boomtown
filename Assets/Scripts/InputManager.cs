@@ -17,8 +17,7 @@ public class InputManager : MonoBehaviour
     int previousWeaponIndex = 0; // The index of the previous weapon used. Used for quick switching. 
     int maxWeaponIndex; // The highest index that the player can go to before returning to 0.     
     
-    [SerializeField] 
-    GameObject[] WeaponsCarried;
+    [SerializeField] GameObject[] WeaponsCarried;
 
     void Awake()
     {
