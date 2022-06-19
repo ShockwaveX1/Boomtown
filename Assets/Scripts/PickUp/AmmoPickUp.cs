@@ -8,7 +8,7 @@ public class AmmoPickUp : PickUp
 
     private void Start()
     {
-        DoesRespawn = false;
+        
     }
 
     public override int GetPickUpValue()
@@ -18,16 +18,8 @@ public class AmmoPickUp : PickUp
 
     public override void PickThisUp()
     {
+        base.PickThisUp();
         Debug.Log("Refilling Ammo");
-        if (DoesRespawn)
-        {
-            GetComponent<MeshRenderer>().enabled = false;
-            Debug.Log("This pickup will respawn");
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
