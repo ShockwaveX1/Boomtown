@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 5248007721667979992}
   - component: {fileID: 7511019850844739874}
   - component: {fileID: 4002704836030084633}
+  - component: {fileID: 2445860490794561977}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -265,6 +266,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptText: {fileID: 0}
+  WeaponNameText: {fileID: 0}
+  CurrentAmmoText: {fileID: 0}
+  MaxAmmoText: {fileID: 0}
+--- !u!114 &2445860490794561977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681015138939785530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cac6abe6abcd034b897665ac1428374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 50
 --- !u!1001 &5421891051892908990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -332,6 +349,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8188226031143586078, guid: b45dbb6db6b2b3543b5c5e894a91ab01, type: 3}
   m_PrefabInstance: {fileID: 5421891051892908990}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5707595705940477674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920802259326949555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f4def72ad18ac34fa58f8a416a27370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponName: Weapon Two
+  MaxAmmo: 40
+  AmmoPerShot: 1
 --- !u!1001 &6681015139099314661
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -411,3 +443,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6239359517610320279, guid: 67f716418f7ba2146a845739c7782755, type: 3}
   m_PrefabInstance: {fileID: 6681015139099314661}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &776572829751575115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4357877415264836193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f4def72ad18ac34fa58f8a416a27370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponName: Weapon One
+  MaxAmmo: 25
+  AmmoPerShot: 1

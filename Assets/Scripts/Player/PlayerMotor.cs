@@ -1,5 +1,4 @@
-/* This script controls the movement of the player. 
- */
+/* This script controls the movement of the player. */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +9,7 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 playerVelocity;
     private bool isGrounded;
     public float Speed = 5f;
-    public float gravity = -9.8f;
+    public float gravity = -9.8f; // Gravity will eventually be moved to Game Rules
     public float jumpHeight = 1.5f;
     bool lerpCrouch;
     bool crouching = false;

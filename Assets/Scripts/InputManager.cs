@@ -18,6 +18,9 @@ public class InputManager : MonoBehaviour
     int maxWeaponIndex; // The highest index that the player can go to before returning to 0.     
     
     [SerializeField] GameObject[] WeaponsCarried;
+    Gun currentGun;
+
+    PlayerUI HUD;
 
     void Awake()
     {
@@ -33,10 +36,20 @@ public class InputManager : MonoBehaviour
         OnFoot.Sprint.performed += ctx => motor.Sprint();
 
         OnFoot.QuickSwitch.performed += ctx => QuickSwitchWeapons();
+        OnFoot.PrimaryFire.performed += ctx => PrimaryFire();
+        OnFoot.SecondaryFire.performed += ctx => SecondaryFire();
 
         ToggleMouseCursor(false);
 
+        #region Weapon
+        // Setup weapons
         maxWeaponIndex = WeaponsCarried.Length - 1;
+
+        // Update the UI with info about the first weapon carried. 
+        HUD = GetComponent<PlayerUI>();
+        currentGun = WeaponsCarried[0].GetComponent<Gun>();
+        HUD.UpdateWeaponText(currentGun.WeaponName, currentGun.MaxAmmo, currentGun.MaxAmmo); // Inital HUD update
+
         // Set all other weapons carried to inactive. 
         for (int i = 0; i < WeaponsCarried.Length; i++)
         {
@@ -45,6 +58,8 @@ public class InputManager : MonoBehaviour
                 WeaponsCarried[i].SetActive(false);
             }
         }
+
+        #endregion Weapon
     }
 
     void FixedUpdate()
@@ -93,9 +108,11 @@ public class InputManager : MonoBehaviour
                     currentWeaponIndex--;
                 }
 
-                // Equip the nowcurrent weapon. 
+                // Equip the now-current weapon. 
                 Debug.Log($"Previous: {previousWeaponIndex}, Current: {currentWeaponIndex}");
                 WeaponsCarried[currentWeaponIndex].SetActive(true);
+                currentGun = WeaponsCarried[currentWeaponIndex].GetComponent<Gun>();
+                HUD.UpdateWeaponText(currentGun.WeaponName, currentGun.AmmoInClip, currentGun.MaxAmmo);
             }
         }
         else if (input.y < 0) // Next Weapon
@@ -115,9 +132,11 @@ public class InputManager : MonoBehaviour
                     currentWeaponIndex++;
                 }
 
-                // Equip the nowcurrent weapon. 
+                // Equip the now-current weapon. 
                 Debug.Log($"Previous: {previousWeaponIndex}, Current: {currentWeaponIndex}");
                 WeaponsCarried[currentWeaponIndex].SetActive(true);
+                currentGun = WeaponsCarried[currentWeaponIndex].GetComponent<Gun>();
+                HUD.UpdateWeaponText(currentGun.WeaponName, currentGun.AmmoInClip, currentGun.MaxAmmo);
             }
         }
     }
@@ -133,12 +152,39 @@ public class InputManager : MonoBehaviour
             previousWeaponIndex = tempCurrent;
             WeaponsCarried[previousWeaponIndex].SetActive(false);
             WeaponsCarried[currentWeaponIndex].SetActive(true);
+            currentGun = WeaponsCarried[currentWeaponIndex].GetComponent<Gun>();
+            HUD.UpdateWeaponText(currentGun.WeaponName, currentGun.AmmoInClip, currentGun.MaxAmmo);
+        }
+    }
+    
+    /// <summary>
+    /// Returns true if able to refill the ammo of the weapon. 
+    /// Returns false if ammo is full. 
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    public bool PickUpAmmo(int amount)
+    {
+        if (!currentGun.isFull)
+        {
+            currentGun.RefillAmmo(amount);
+            Debug.Log($"Picking up ammo: {amount}");
+            HUD.UpdateAmmo(currentGun.AmmoInClip);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Currently held weapon has full ammo. ");
+            return false;
         }
     }
 
     void PrimaryFire()
     {
-        Debug.Log("Primary Fire");
+        //Debug.Log("Primary Fire");
+        currentGun.FireGun();
+        // Update the UI to show the decreased ammo count. 
+        HUD.UpdateAmmo(currentGun.AmmoInClip);
     }
 
     void SecondaryFire()
